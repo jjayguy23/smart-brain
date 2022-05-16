@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Particles from 'react-particles-js';
+import Particles from 'react-tsparticles';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
@@ -9,17 +9,76 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
 
-// const particlesOptions = {
-//   particles: {
-//     number: {
-//       value: 30,
-//         density: {
-//         enable: true,
-//         value_area: 800
-//       }
-//     }
-//   }
-// }
+const particleOptions = {
+  fpsLimit: 60,
+  interactivity: {
+    events: {
+      onClick: {
+        enable: false,
+        mode: "push",
+      },
+      onHover: {
+        enable: false,
+        mode: "repulse",
+      },
+      resize: true,
+    },
+    modes: {
+      bubble: {
+        distance: 100,
+        duration: 2,
+        opacity: 0.8,
+        size: 40,
+      },
+      push: {
+        quantity: 4,
+      },
+    },
+  },
+  particles: {
+    color: {
+      value: "#ffffff",
+    },
+    links: {
+      color: "#ffffff",
+      distance: 100,
+      enable: true,
+      opacity: 0.5,
+      width: 1,
+    },
+    collisions: {
+      enable: true,
+    },
+    move: {
+      direction: "none",
+      enable: true,
+      outMode: "bounce",
+      random: false,
+      speed: 1.5,
+      straight: false,
+    },
+    number: {
+      density: {
+        enable: true,
+        area: 800,
+      },
+      value: 20,
+    },
+    opacity: {
+      value: 0.5,
+    },
+    shape: {
+      type: "circle",
+    },
+    size: {
+      random: true,
+      value: 5,
+    },
+  },
+  detectRetina: true,
+}
+
+
 const initialState = {
   input: '',
   imageUrl: '',
@@ -131,9 +190,9 @@ displayFaceBox = (box) => {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
-         {/*<Particles 
-              params={particlesOptions}
-        />*/}
+         <Particles
+          options={particleOptions}
+        />
         <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
         { route === 'home'
          ? <div>
